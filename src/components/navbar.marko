@@ -1,0 +1,38 @@
+class {
+  async onCreate() {
+    this.state = {
+      name: 'Gregory'
+    }
+
+    async function getPokemon(){
+      const response = await fetch(`https://pokeapi.co/api/v2/pokemon/ditto`)
+      const result = await response.json()
+
+      return result.name
+    }
+    
+    this.state.name = await getPokemon()
+  }
+}
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary custom">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Site do ${state.name}</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/features">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/pricing">Pricing</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
